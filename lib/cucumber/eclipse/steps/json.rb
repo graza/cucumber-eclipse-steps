@@ -6,7 +6,7 @@ module Cucumber
   module Eclipse
     module Steps
       class Json < Cucumber::Formatter::Progress
-        include Console
+        include Cucumber::Formatter::Console
   
         class StepDefKey < Cucumber::Formatter::StepDefinitionLight
           attr_accessor :mean_duration, :status
