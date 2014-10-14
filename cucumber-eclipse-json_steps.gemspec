@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/cucumber/eclipse/json_steps/version', __FILE__)
+require File.expand_path('../lib/cucumber/eclipse/steps/json/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Graham Agnew"]
@@ -9,13 +9,13 @@ Gem::Specification.new do |gem|
     such that the cucumber.eclipse.steps.json Eclipse plugin can know where
     the steps are defined.
   EOS
-  gem.summary       = %q{Stepdef/step JSON formatter for cucumber-eclipse.}
+  gem.summary       = %q{JSON formatter for cucumber.eclipse.steps.json plugin}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "cucumber-eclipse-json_steps"
+  gem.name          = "cucumber-eclipse-steps-json"
   gem.require_paths = ["lib"]
-  gem.version       = Cucumber::Eclipse::JsonSteps::VERSION
+  gem.version       = Cucumber::Eclipse::Steps::Json::VERSION
 end

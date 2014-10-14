@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in cucumber-eclipse-json_steps.gemspec
+# Specify your gem's dependencies in cucumber-eclipse-steps-json.gemspec
 gemspec
