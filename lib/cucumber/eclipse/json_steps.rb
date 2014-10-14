@@ -4,7 +4,7 @@ require 'cucumber/step_definition_light'
 
 module Cucumber
   module Eclipse
-    module JsonSteps < Cucumber::Formatter::Progress
+    class JsonSteps < Cucumber::Formatter::Progress
       include Console
 
       class StepDefKey < Cucumber::Formatter::StepDefinitionLight
