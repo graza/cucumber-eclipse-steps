@@ -1,4 +1,4 @@
-require "cucumber/eclipse/json_steps/version"
+require "cucumber/eclipse/steps/json/version"
 require 'cucumber/formatter/progress'
 require 'cucumber/step_definition_light'
 
