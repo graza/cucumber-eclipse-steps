@@ -8,7 +8,7 @@ module Cucumber
       class Json < Cucumber::Formatter::Progress
         include Cucumber::Formatter::Console
   
-        class StepDefKey < Cucumber::Formatter::StepDefinitionLight
+        class StepDefKey < Cucumber::StepDefinitionLight
           attr_accessor :mean_duration, :status
         end
   
