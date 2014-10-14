@@ -1,4 +1,4 @@
-# Cucumber::Eclipse::Steps::Json
+# Cucumber::Eclipse::Steps
 
     This is a Cucumber formatter gem that outputs the step definitions and steps
     such that the cucumber.eclipse.steps.json Eclipse plugin can know where
@@ -8,7 +8,7 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'cucumber-eclipse-steps-json'
+    gem 'cucumber-eclipse-steps'
 
 And then execute:
 
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cucumber-eclipse-steps-json
+    $ gem install cucumber-eclipse-steps
 
 ## Usage
 
