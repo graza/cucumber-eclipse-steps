@@ -40,7 +40,7 @@ module Cucumber
   
             @stepdef_to_match[stepdef_key] << {
               :keyword => keyword,
-              :step_match => step_match,
+              :step_match => step_match.format_args,
               :status => status,
               :file_colon_line => @step.file_colon_line,
               :duration => @duration
@@ -59,33 +59,28 @@ module Cucumber
             keys = @stepdef_to_match.keys.sort {|a,b| a.mean_duration <=> b.mean_duration}.reverse
           end
   
-          keys.each do |stepdef_key|
-            print_step_definition(stepdef_key)
+          step_definitions_array = keys.collect do |stepdef_key|
+            h = print_step_definition(stepdef_key)
   
             if @stepdef_to_match[stepdef_key].any?
-              print_steps(stepdef_key)
-            else
-              @io.puts("  " + format_string("NOT MATCHED BY ANY STEPS", :failed))
+              h[:steps] = @stepdef_to_match[stepdef_key]
             end
+            h
           end
+          @io.write(MultiJson.dump(step_definitions_array, :pretty => true))
           @io.puts
           super
         end
   
-        def print_step_definition(stepdef_key)
-          @io.write(MultiJson.dump({
-              :mean_duration => stepdef_key.mean_duration,
-              :regexp_source => stepdef_key.regexp_source,
-              :status => stepdef_key.status,
-              :file_colon_line => stepdef_key.file_colon_line
-          }, :pretty => true))
-          @io.puts
+        def step_definition_hash(stepdef_key)
+          {
+            :mean_duration => stepdef_key.mean_duration,
+            :regexp_source => stepdef_key.regexp_source,
+            :status => stepdef_key.status,
+            :file_colon_line => stepdef_key.file_colon_line
+          }
         end
   
-        def print_steps(stepdef_key)
-          @io.write(MultiJson.dump(@stepdef_to_match[stepdef_key], :pretty => true))
-        end
-
         def aggregate_info
           @stepdef_to_match.each do |key, steps|
             if steps.empty?
