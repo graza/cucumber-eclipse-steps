@@ -1,13 +1,13 @@
 require "cucumber/eclipse/steps/version"
-require 'cucumber/formatter/progress'
+require 'cucumber/formatter/io'
 require 'cucumber/step_definition_light'
 require 'multi_json'
 
 module Cucumber
   module Eclipse
     module Steps
-      class Json < Cucumber::Formatter::Progress
-        include Cucumber::Formatter::Console
+      class Json
+        include Cucumber::Formatter::Io
   
         class StepDefKey < Cucumber::StepDefinitionLight
           attr_accessor :mean_duration, :status
@@ -20,9 +20,9 @@ module Cucumber
           @stepdef_to_match = Hash.new{|h,stepdef_key| h[stepdef_key] = []}
         end
   
-        def before_features(features)
-          print_profile_information
-        end
+        #def before_features(features)
+        #  print_profile_information
+        #end
   
         def before_step(step)
           @step = step
@@ -46,7 +46,6 @@ module Cucumber
               :duration => @duration
             }
           end
-          super
         end
   
         def print_summary(features)
@@ -60,7 +59,7 @@ module Cucumber
           end
   
           step_definitions_array = keys.collect do |stepdef_key|
-            h = print_step_definition(stepdef_key)
+            h = step_definition_hash(stepdef_key)
   
             if @stepdef_to_match[stepdef_key].any?
               h[:steps] = @stepdef_to_match[stepdef_key]
@@ -69,7 +68,6 @@ module Cucumber
           end
           @io.write(MultiJson.dump(step_definitions_array, :pretty => true))
           @io.puts
-          super
         end
   
         def step_definition_hash(stepdef_key)
