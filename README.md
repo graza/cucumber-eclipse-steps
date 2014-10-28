@@ -1,14 +1,18 @@
 # Cucumber::Eclipse::Steps
 
-    This is a Cucumber formatter gem that outputs the step definitions and steps
-    such that the cucumber.eclipse.steps.json Eclipse plugin can know where
-    the steps are defined.
+This is a Cucumber formatter gem that outputs the step definitions and steps
+such that the cucumber.eclipse.steps.json Eclipse plugin can know where
+the steps are defined.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
     gem 'cucumber-eclipse-steps'
+
+The gem can also be fecthed directly from the source on github:
+
+    gem 'cucumber-eclipse-steps', :git => 'https://github.com/graza/cucumber-eclipse-steps.git'
 
 And then execute:
 
@@ -20,10 +24,10 @@ Or install it yourself as:
 
 ## Usage
 
-    The 'cucumber' command can load a formatter if the -f option uses its
-    class name.  Therefore to use this formatter, the command would be thus:
+The 'cucumber' command can load a formatter if the -f option uses its
+class name.  Therefore to use this formatter, the command would be thus:
 
-      cucumber -f Cucumber::Eclipse::Steps::Json <other-args>
+    $ cucumber -f Cucumber::Eclipse::Steps::Json <other-args>
 
 ## Contributing
 
