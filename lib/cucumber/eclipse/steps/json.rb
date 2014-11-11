@@ -47,8 +47,12 @@ module Cucumber
             }
           end
         end
-  
-        def print_summary(features)
+
+        def after_features(features)
+          print_summary
+        end
+
+        def print_summary
           add_unused_stepdefs
           aggregate_info
   
